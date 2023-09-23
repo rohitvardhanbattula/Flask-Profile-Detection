@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        a:link, a:visited {
+          background-color: #9b59b6 ;
+          color: white;
+          padding: 10px 10px;
+          position: relative;
+          bottom: 20px;
+          top:20px;
+          left:100px;
+          text-align: center;
+          text-decoration: none;
+          display:inline-block;
+          background: linear-gradient(135deg, #71b7e6,#9b59b6);
+        }
+        
+        
+        </style>
     <title>Prediction Result</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <h1>Prediction Result</h1>
-    <p>The profile is: {{ prediction }}</p>
-    <a href="/">Go back</a>
+    <div class="container">
+        <div class="title">Prediction result</div>
+    
+        <span class="details">The profile is: {{ prediction }}
+
+        </span>
+        <a href="/" target="_blank">Go Back</a>
+</div>
+
 </body>
 </html>
