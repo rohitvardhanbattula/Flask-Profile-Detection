@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake Profile Detection</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+    <div class="title">Fake Profile Detection</div>
+    <form action="/predict" method="post">
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details" for="statuses_count">Statuses Count:</span>
+                <input type="text" id="statuses_count" name="statuses_count"><br><br>
+            </div>
+            <div class="input-box">
+                <span class="details" for="followers_count">Followers Count:</span>
+                <input type="text" id="followers_count" name="followers_count"><br><br>
+            </div>
+            <div class="input-box">
+                <span class="details" for="friends_count">Friends Count:</span>
+                <input type="text" id="friends_count" name="friends_count"><br><br>
+            </div> 
+            <div class="input-box">
+                <span class="details" for="favourites_count">Favourites Count:</span>
+                <input type="text" id="favourites_count" name="favourites_count"><br><br>
+            </div>
+        <div class="input-box">
+            <span class="details" for="listed_count">Listed Count:</span>
+            <input type="text" id="listed_count" name="listed_count"><br><br>
+        </div>
+        <div class="input-box">
+            <span class="details" for="name">Name:</span>
+            <input type="text" id="name" name="name"><br><br>
+        </div>
+        <div class="input-box">
+            <span class="details" for="lang">Language:</span>
+            <input type="text" id="lang" name="lang"><br><br>
+        </div>
+        <div class="button">
+            <input type="submit" value="Predict">
+        </div>
+    </div>
+    </form>
+</body>
+</html>
