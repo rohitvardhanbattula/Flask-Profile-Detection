@@ -3,38 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>landing_page</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+      *{
+        box-sizing: border-box;
+        background-color: #71b7e6;
+      }
+      .image
+      {
+        float: left;
+        width:25%;
+        padding:5px;
 
+      }
+      .image #pic{
+        width: 100%;
+        height:150px;
+      }
+      .clearfix::after
+      {
+        content:"";
+        clear: both;
+        display: table;
+      }
+      .b
+      {
+        position: relative;
+        left:70px;
+      }
+
+    </style>
 
 </head>
 <body>
 
-  <div class="button-container">
-    <div class="insta">
-      <img src="insta.jpeg" alt="Image 1"  width="300" height="200">
-      <button>
+  
+    <div class="image">
+      <img id="pic" src="insta.jpeg" alt="Image 1" >
+      <button class="b">
         INSTAGRAM
       </button>
     </div>
-    <div class="twitter">
-      <img src="/twitter.jpeg" alt="Image 2"  width="300" height="200">
-      <button>
+    <div class="image" >
+      <img id="pic" src="/twitter.jpeg" alt="Image 2" >
+      <button class="b">
         TWITTER
       </button>
     </div>
-    <div >
-      <img src="fb.jpeg" alt="Image 3" width="300" height="200">
-      <button>
+    <div class="image">
+      <img id="pic" src="fb.jpeg" alt="Image 3">
+      <button class="b">
         FACEBOOK
       </button>
     </div>
-    <div class="others">
-      <img src="others.jpeg" alt="Image 4">
-      <button onclick="generateHTML('newhtml.html')">
+    <div class="image">
+      <img id="pic" src="others.jpeg" alt="Image 4" >
+      <button class="b" onclick="generateHTML('newhtml.html')">
         OTHERS
       </button>
     </div>
 
-  </div>
+ 
 
     <script>
       function generateHTML(pageName)
