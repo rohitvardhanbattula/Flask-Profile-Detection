@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake Profile Detection</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+    <div class="title">Fake Profile Detection</div>
+    <form method="POST" action="/predict_twitter" >
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details" for="abuse_report">No of Abuse Reports</span>
+                <input type="text"  name="abuse_report" required><br><br>
+            </div>
+            <div class="input-box">
+                <span class="details" for="rejected_requests">No. of Rejected Requests</span>
+                <input type="text"  name="rejected_requests" required><br><br>
+            </div>
+            <div class="input-box">
+                <span class="details" for="pending_requests">No of requests that are not accepted:</span>
+                <input type="text" name="pending_requests" required><br><br>
+            </div> 
+            <div class="input-box">
+                <span class="details" for="friends">No of friends:</span>
+                <input type="text" name="friends" required><br><br>
+            </div>
+        <div class="input-box">
+            <span class="details" for="followers">No. of followers</span>
+            <input type="text" name="followers" required><br><br>
+        </div>
+        <div class="input-box">
+            <span class="details" for="likes_to_unknown">No. of likes:</span>
+            <input type="text"  name="likes_to_unknown"required><br><br>
+        </div>
+        <div class="input-box">
+            <span class="details" for="comments_per_day">No.of comments per day</span>
+            <input type="text" name="comments_per_day" required><br><br>
+        </div>
+        <div class="button1">
+            <input type="submit" value="Predict">
+        </div>
+    </div>
+    </form>
+</body>
+</html>
