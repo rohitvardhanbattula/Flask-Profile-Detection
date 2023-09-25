@@ -1,0 +1,65 @@
+import numpy as np
+import pandas as pd
+import joblib
+from sklearn.model_selection import train_test_split,RandomizedSearchCV
+from sklearn.metrics import mean_absolute_error
+from sklearn.ensemble import RandomForestClassifier
+
+
+#msk = np.random.rand(len(df)) < 0.7
+#train = df[msk]
+#test = df[~msk]
+#testing_data = test.values[:, 0:7]
+#testing_data_labels = test.values[:, 8]
+#features = train.values[:, 0:7]
+#labels = train.values[:, 8].astype('int')
+
+
+df = pd.read_csv(r"C:\Users\vardh\OneDrive\Desktop\SIH 2023\twitter_data.csv")
+#x=df.values[:, 0:7]
+y=df.values[:, 8]
+
+#x = df.iloc[:, :-1]
+x = df.iloc[:, 1:-1]
+
+print(x.columns)
+print(x.head(5))
+
+XX_train,XX_test,yy_train,yy_test = train_test_split(x, y, test_size=0.20, random_state=100,shuffle=True)
+
+rf_classifier = RandomForestClassifier()
+
+n_estimators = [int(x) for x in np.linspace(start=10, stop=80, num=10)]
+
+parameters = {
+    'n_estimators': n_estimators,
+    'max_depth': [None, 5, 10, 20],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4, 10, 15, 30, 50],
+    'max_features': ['sqrt', 'log2', None],
+    'random_state': [42],
+    'bootstrap': [True, False]
+}
+
+clf = RandomizedSearchCV(estimator=rf_classifier, param_distributions=parameters, cv=10, verbose=2, n_jobs=4)
+clf.fit(XX_train, yy_train)
+
+joblib.dump(clf, 'twitter_model.pkl')
+
+train_predictions = clf.predict(XX_train)
+prediction = clf.predict(XX_test)
+
+err_training = mean_absolute_error(train_predictions, yy_train)
+err_test = mean_absolute_error(prediction, yy_test)
+
+#plot_roc_curve(yy_test, prediction)
+
+print("Train Accuracy is : {}".format(100 - (100*err_training)))
+print("Test Accuracy is : {}".format(100 - (100*err_test)))
+
+print(f'Train accuracy: {clf.score(XX_train, yy_train):.3f}')
+print(f'Test accuracy: {clf.score(XX_test, yy_test):.3f}')
+
+
+
+
